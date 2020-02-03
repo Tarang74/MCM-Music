@@ -6,7 +6,7 @@ import os
 from collections import defaultdict
 from io import StringIO
 
-f = open("mSong 1.txt", "r+")
+f = open("mSong1.txt", "r+")
 print("Name of song: ", f.readline())
 
 lines = f.readlines()
@@ -16,6 +16,7 @@ a = ' '.join(a.split())
 
 f.close()
 os.remove("output.txt")
+
 chords = ["A", "Am", "A#", "A#m",
           "B", "Bm",
           "C", "Cm", "C#", "C#m",
@@ -54,6 +55,7 @@ with open('output.txt', 'r') as file:
 data = pd.DataFrame(raw,columns = ['row','column','value'])
 data = data.rename_axis('ID').values
 print(data)
+os.remove("output.txt")
 
 if sum(answers.values()) == total:
     print("Total was achieved - " + str(sum(answers.values())))
