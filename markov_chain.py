@@ -80,3 +80,11 @@ print("Probability matrix of transitions (rounded):")
 for i in tProb:
     print(i)
 print("\n")
+
+#sum of columns in tOccr:
+f = 0
+for i in range(len(tOccr)):
+    for j in range(len(tOccr)):
+        f = f + int(tOccr[j][i])
+    print(f)
+    f = 0
