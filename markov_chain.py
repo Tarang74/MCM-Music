@@ -1,11 +1,7 @@
 import numpy as np
 import itertools as it
 import pandas as pd
-import os
-import sys
-from collections import defaultdict
-from io import StringIO
-import random as rn
+from numpy import load
 
 states = ["A", "Bm", "C#m", "D", "E", "F#m", "G#"] #All possible chords that can be combined
 tName = [] #Transition names (eg. A-Bm)
@@ -26,14 +22,14 @@ for i in states: #for every chord
     tProb.append(tK)
 
 raw = []
-with open('output.txt', 'r') as file: #open output.txt file and create array of data
+with open('export.txt', 'r') as file: #open export.txt file and create array of data
     for line in file:
         raw.append(line.split())
 data = pd.DataFrame(raw,columns = ['row','column','value'])
 data = data.rename_axis('ID').values
 
 print("\n")
-print("Values from output.txt file:")
+print("Values from export.txt file:")
 for i in data:
     print(i)
 
@@ -41,7 +37,7 @@ x = 0
 y = 0
 z = 0
 print("\n")
-print("XY coordinates and values from output.txt file:")
+print("XY coordinates and values from export.npy file:")
 for i in range(len(data)): #for every three value array
     for j in range(len(states)):
         if data[i][0] == states[j]: #where the first letter is a possible chord j
