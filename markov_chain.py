@@ -11,17 +11,17 @@ states = ["A", "Bm", "C#m", "D", "E", "F#m", "G#"] #All possible chords that can
 tName = [] #Transition names (eg. A-Bm)
 tOccr = [] #Occurance matrix
 tProb = [] #Probabilities matrix
-total = 68
+total = 68 #from filter_song.py
 
 for i in states: #for every chord
-    tI = [] #create temporary array
+    tI = [] #create temporary arrays
     tJ = []
     tK = []
     for j in states: #for every chord
         tI.append(j+"-"+i) #add combination of j and i to temp array
         tJ.append(0)
         tK.append(0.0)
-    tName.append(tI) #add temp array to transition array
+    tName.append(tI) #add temp arrays to transition arrays
     tOccr.append(tJ)
     tProb.append(tK)
 
