@@ -79,4 +79,5 @@ for elem in stackedArray:
     dict2[key] = dict2.get(key,0) + value
 
 finalArray = [[*key, value] for key, value in dict2.items()]
+finalArray = np.array(finalArray)
 print(finalArray)
