@@ -6,6 +6,7 @@ import sys
 from collections import defaultdict
 from io import StringIO
 import random as rn
+from filter_song import finalArray
 
 states = ["A", "Bm", "C#m", "D", "E", "F#m", "G#"] #All possible chords that can be combined
 tName = [] #Transition names (eg. A-Bm)
@@ -25,13 +26,13 @@ for i in states: #for every chord
     tOccr.append(tJ)
     tProb.append(tK)
 
-raw = []
-with open('output.txt', 'r') as file: #open output.txt file and create array of data
-    for line in file:
-        raw.append(line.split())
-data = pd.DataFrame(raw,columns = ['row','column','value'])
-data = data.rename_axis('ID').values
-
+# raw = []
+# with open('output.txt', 'r') as file: #open output.txt file and create array of data
+#     for line in file:
+#         raw.append(line.split())
+# data = pd.DataFrame(raw,columns = ['row','column','value'])
+# data = data.rename_axis('ID').values
+data = finalArray
 print("\n")
 print("Values from output.txt file:")
 for i in data:
