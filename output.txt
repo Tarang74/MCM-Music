@@ -1,0 +1,6 @@
+Am Am 20
+Am C 2
+Am D 42
+C C 4
+C D 2
+D Am 43
