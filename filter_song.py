@@ -2,11 +2,17 @@ import numpy as np
 import itertools as it
 import pandas as pd
 import os
+import sys
 
 from collections import defaultdict
 from io import StringIO
 
-f = open("mSong 1.txt", "r+")
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print('Invalid number of arguments:')
+        print('Example usage: python3 filter_song.py <in.txt> <out.txt>')
+
+f = open(sys.argv[1], "r+")
 print("Name of song: ", f.readline())
 
 lines = f.readlines()
@@ -45,10 +51,10 @@ for i in range(progArray.shape[0]):
         if progArray[i][0] == chordProg[j] and progArray[i][1] == chordProg[j + 1]:
             answers[newProgArray] += 1
 for npA in sorted(answers.keys()):
-    print(npA, answers[npA], file=open("output.txt", "a"))
+    print(npA, answers[npA], file=open(sys.argv[2], "a"))
 
 raw = []
-with open('output.txt', 'r') as file:
+with open(sys.argv[2], 'r') as file:
     for line in file:
         raw.append(line.split())
 data = pd.DataFrame(raw,columns = ['row','column','value'])
