@@ -61,7 +61,7 @@ with open('output.txt', 'r') as file:
 data = pd.DataFrame(raw,columns = ['row','column','value'])
 data = data.rename_axis('ID').values
 print(data)
-os.remove(sys.argv[2])
+os.remove("output.txt")
 
 if sum(answers.values()) == total:
     print("Total was achieved - " + str(sum(answers.values())))
