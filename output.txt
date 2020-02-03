@@ -1,0 +1,9 @@
+A Bm 8
+A E 13
+Bm F#m 8
+D A 13
+E A 6
+E D 12
+F#m A 1
+F#m D 1
+F#m E 6
