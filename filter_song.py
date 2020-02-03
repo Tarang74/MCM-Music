@@ -2,17 +2,11 @@ import numpy as np
 import itertools as it
 import pandas as pd
 import os
-import sys
 
 from collections import defaultdict
 from io import StringIO
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print('Invalid number of arguments:')
-        print('Example usage: python3 filter_song.py <in.txt> <out.txt>')
-
-f = open(sys.argv[1], "r+")
+f = open("mSong1.txt", "r+")
 print("Name of song: ", f.readline())
 
 lines = f.readlines()
@@ -52,7 +46,7 @@ for i in range(progArray.shape[0]):
         if progArray[i][0] == chordProg[j] and progArray[i][1] == chordProg[j + 1]:
             answers[newProgArray] += 1
 for npA in sorted(answers.keys()):
-    print(npA, answers[npA], file=open(sys.argv[2], "a"))
+    print(npA, answers[npA], file=open("output.txt", "a"))
 
 raw = []
 with open('output.txt', 'r') as file:
@@ -61,7 +55,7 @@ with open('output.txt', 'r') as file:
 data = pd.DataFrame(raw,columns = ['row','column','value'])
 data = data.rename_axis('ID').values
 print(data)
-os.remove(sys.argv[2])
+os.remove("output.txt")
 
 if sum(answers.values()) == total:
     print("Total was achieved - " + str(sum(answers.values())))
