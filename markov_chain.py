@@ -1,11 +1,6 @@
-import numpy as np
-import itertools as it
-import pandas as pd
-import os
-import sys
-from collections import defaultdict
-from io import StringIO
-import random as rn
+# Created by Leighton Swannell
+# February 3, 2020
+
 from filter_song import *
 
 states = ["A", "Bm", "C#m", "D", "E", "F#m", "G#"] #All possible chords that can be combined
