@@ -6,14 +6,9 @@ import itertools as it
 import pandas as pd
 import os
 from collections import defaultdict
-<<<<<<< HEAD
-from numpy import asarray
-from numpy import save
-=======
 from numpy import savetxt
 numProgs = 0
 numSongs = 0
->>>>>>> master
 
 chords = ["A", "Am", "A#", "A#m",
                 "B", "Bm",
@@ -71,14 +66,9 @@ for file1 in os.listdir(sel):  #repeat for all files in major or minor
 
     os.remove("temp.txt") # remove temp file
 
-<<<<<<< HEAD
-    if sum(answers.values()) == total: #verify if number of chord progressions is number of chords - 1
-        print("Total: " + str(sum(answers.values())) + "\n")
-=======
     if sum(answers.values()) == total:
         numProgs = numProgs + total
         numSongs = numSongs + 1
->>>>>>> master
     else:
 <<<<<<< HEAD
         print("No songs in directory!")
