@@ -1,19 +1,17 @@
+# Created by Leighton Swannell
+# February 3, 2020
+
 import numpy as np
-import itertools as it
-import pandas as pd
 import os
-import sys
-from collections import defaultdict
-from io import StringIO
-import random as rn
+import itertools as it
 from filter_song import *
 
 states = ["A", "Bm", "C#m", "D", "E", "F#m", "G#"] #All possible chords that can be combined
 tName = [] #Transition names (eg. A-Bm)
 tOccr = [] #Occurance matrix
 tProb = [] #Probabilities matrix
-tProbR = [] #Rounded matrix for viewer output
 sumArry = []
+sumTcol = []
 xyMtrx = ["0", "1", "2", "3", "4", "5", "6"]
 
 for i in states: #for every chord
@@ -27,7 +25,6 @@ for i in states: #for every chord
     tName.append(tI) #add temp arrays to transition arrays
     tOccr.append(tJ)
     tProb.append(tK)
-    tProbR.append(tK)
 
 data = finalArray
 print("\n")
@@ -56,12 +53,12 @@ for i in range(len(data)): #for every three value array
 f = 0
 for i in range(len(tOccr)):
     for k in range(len(tOccr)):
-        f = f + int(tOccr[i][k])
+        f = f + int(tOccr[k][i])
     sumArry.append(f)
     if f == 0:
         f = 1
     for j in range(len(tOccr)):
-        tProb[i][j] = int(tOccr[i][j]) / f
+        tProb[j][i] = int(tOccr[j][i]) / f
     f = 0
 
 #XY Position Matrix Output
@@ -78,11 +75,6 @@ for i in range(len(tOccr)):
 print(dash)
 print(dash)
 print("{:<4s}{:>2}{:>6}{:>6}{:>6}{:>6}{:>6}{:>5}".format("", sumArry[0], sumArry[1], sumArry[2], sumArry[3], sumArry[4], sumArry[5], sumArry[6]))
-
-#round values of matrix T
-for i in range(len(tOccr)):
-    for j in range(len(tOccr)):
-        tProbR[i][j] = round(tProb[i][j], 2)
 
 print("\n")
 for i in range(len(tProb)):

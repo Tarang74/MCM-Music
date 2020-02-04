@@ -1,3 +1,6 @@
+# Created by Tarang Janawalkar
+# February 1, 2020
+
 import numpy as np
 import itertools as it
 import pandas as pd
