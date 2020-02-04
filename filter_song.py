@@ -3,6 +3,9 @@ import itertools as it
 import pandas as pd
 import os
 from collections import defaultdict
+from numpy import savetxt
+numProgs = 0
+numSongs = 0
 
 chords = ["A", "Am", "A#", "A#m",
                 "B", "Bm",
@@ -24,7 +27,9 @@ sel = input("major or minor (LC): ") #input major or minor
 for file1 in os.listdir(sel):  #repeat for all files in major or minor
     dir = sel + "/" + file1
     f = open(dir, "r+") #open file
-    print("File: " + file1 + " - Name: " + f.readline()) #file/song name
+    songName = f.readline()
+    songName = songName.strip("#")
+    songName = songName.rstrip()
 
     lines = f.readlines() #gather file contents
     f.close() #close file
@@ -35,7 +40,6 @@ for file1 in os.listdir(sel):  #repeat for all files in major or minor
 
     chordProg = [w for w in a.split() if w in chords] #remove all but chords
     total = len(chordProg) - 1 #number of chord progressions
-    #print(str(len(chordProg)) + " chords: " + str(total) + " chord progressions\n")
 
     answers = defaultdict(int)
 
@@ -55,13 +59,13 @@ for file1 in os.listdir(sel):  #repeat for all files in major or minor
 
     tot = pd.DataFrame(raw, columns=['row', 'column', 'value'])
     tot = tot.rename_axis('ID').values
-    print(tot)
     dict[file1[:-4]] = tot
 
     os.remove("temp.txt")
 
     if sum(answers.values()) == total:
-        print("Total: " + str(sum(answers.values())) + "\n")
+        numProgs = numProgs + total
+        numSongs = numSongs + 1
     else:
         print("Total: " + str(sum(answers.values())) + " Does not match: " + str(total) + "\n")
 
@@ -80,4 +84,14 @@ for elem in stackedArray:
 
 finalArray = [[*key, value] for key, value in dict2.items()]
 finalArray = np.array(finalArray)
-print(finalArray)
+
+#provide output to user
+print("\n")
+dash = '-' * 42
+line = "|"
+print(dash)
+print("Found ", numProgs, " progressions from ", numSongs, " songs")
+print(dash)
+
+# save finalArray to txt file
+np.savetxt('export.txt', finalArray, fmt='%s')
