@@ -1,16 +1,16 @@
 import numpy as np
 import itertools as it
 import pandas as pd
-<<<<<<< HEAD
-from numpy import load
-=======
 import os
 import sys
 from collections import defaultdict
 from io import StringIO
 import random as rn
+
+# Created by Leighton Swannell
+# February 3, 2020
+
 from filter_song import *
->>>>>>> master
 
 states = ["A", "Bm", "C#m", "D", "E", "F#m", "G#"] #All possible chords that can be combined
 tName = [] #Transition names (eg. A-Bm)
@@ -33,19 +33,6 @@ for i in states: #for every chord
     tProb.append(tK)
     tProbR.append(tK)
 
-<<<<<<< HEAD
-raw = []
-with open('export.txt', 'r') as file: #open export.txt file and create array of data
-    for line in file:
-        raw.append(line.split())
-data = pd.DataFrame(raw,columns = ['row','column','value'])
-data = data.rename_axis('ID').values
-
-print("\n")
-print("Values from export.txt file:")
-for i in data:
-    print(i)
-=======
 data = finalArray
 print("\n")
 for i in range(len(data)):
@@ -56,16 +43,10 @@ for i in range(len(data)):
         print('{:<12s}{:<13s}{:^8s}'.format("From", "To", "# of occurances"))
         print(dash)
     print("{:<12s}{:<22s}{:>6}".format(data[i][0], data[i][1], data[i][2]))
->>>>>>> master
 
 x = 0
 y = 0
 z = 0
-<<<<<<< HEAD
-print("\n")
-print("XY coordinates and values from export.npy file:")
-=======
->>>>>>> master
 for i in range(len(data)): #for every three value array
     for j in range(len(states)):
         if data[i][0] == states[j]: #where the first letter is a possible chord j
