@@ -3,8 +3,14 @@ import itertools as it
 import pandas as pd
 import os
 from collections import defaultdict
+<<<<<<< HEAD
 from numpy import asarray
 from numpy import save
+=======
+from numpy import savetxt
+numProgs = 0
+numSongs = 0
+>>>>>>> master
 
 chords = ["A", "Am", "A#", "A#m",
                 "B", "Bm",
@@ -26,7 +32,9 @@ sel = input("major or minor (LC): ") #input major or minor
 for file1 in os.listdir(sel):  #repeat for all files in major or minor
     dir = sel + "/" + file1
     f = open(dir, "r+") #open file
-    print("File: " + file1 + " - Name: " + f.readline()) #file/song name
+    songName = f.readline()
+    songName = songName.strip("#")
+    songName = songName.rstrip()
 
     lines = f.readlines() #gather file contents
     f.close() #close file
@@ -37,7 +45,6 @@ for file1 in os.listdir(sel):  #repeat for all files in major or minor
 
     chordProg = [w for w in a.split() if w in chords] #remove all but chords
     total = len(chordProg) - 1 #number of chord progressions
-    #print(str(len(chordProg)) + " chords: " + str(total) + " chord progressions\n")
 
     answers = defaultdict(int)
 
@@ -57,14 +64,22 @@ for file1 in os.listdir(sel):  #repeat for all files in major or minor
 
     tot = pd.DataFrame(raw, columns=['row', 'column', 'value']) #convert into numPy array
     tot = tot.rename_axis('ID').values
-    print(tot)
     dict[file1[:-4]] = tot
 
     os.remove("temp.txt") # remove temp file
 
+<<<<<<< HEAD
     if sum(answers.values()) == total: #verify if number of chord progressions is number of chords - 1
         print("Total: " + str(sum(answers.values())) + "\n")
+=======
+    if sum(answers.values()) == total:
+        numProgs = numProgs + total
+        numSongs = numSongs + 1
+>>>>>>> master
     else:
+<<<<<<< HEAD
+        print("No songs in directory!")
+=======
         print("Total: " + str(sum(answers.values())) + " Does not match: " + str(total) + "\n")
 
 stackedArray = np.empty(3) #new blank array for combining results
@@ -80,9 +95,26 @@ for elem in stackedArray: #remove duplicates, by using dictionary
     value = int(elem[-1])
     dict2[key] = dict2.get(key,0) + value
 
+<<<<<<< HEAD
 finalArray = [[*key, value] for key, value in dict2.items()] #convert to array
 print(finalArray)
 
 with open("export.txt", "w") as txt_file: #export to plain array txt
     for line in finalArray:
         txt_file.write(" ".join(map(str,line)) + "\n") # works with any number of elements in a line
+=======
+finalArray = [[*key, value] for key, value in dict2.items()]
+finalArray = np.array(finalArray)
+
+#provide output to user
+print("\n")
+dash = '-' * 42
+line = "|"
+print(dash)
+print("Found ", numProgs, " progressions from ", numSongs, " songs")
+print(dash)
+
+# save finalArray to txt file
+np.savetxt('export.txt', finalArray, fmt='%s')
+>>>>>>> leighton
+>>>>>>> master
