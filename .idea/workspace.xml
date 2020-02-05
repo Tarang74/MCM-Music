@@ -3,12 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="c7421d75-e40f-436e-b10e-bbf48563e269" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/export.txt" beforeDir="false" afterPath="$PROJECT_DIR$/export.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/filter_song.py" beforeDir="false" afterPath="$PROJECT_DIR$/filter_song.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/markov_chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/markov_chain.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,7 +33,49 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.markov_chain">
+    <configuration name="MarkovTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MCM-Music" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MarkovTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="filter_song" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MCM-Music" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/filter_song.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="markov_chain" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MCM-Music" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -49,6 +100,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.markov_chain" />
+        <item itemvalue="Python.filter_song" />
+        <item itemvalue="Python.MarkovTest" />
       </list>
     </recent_temporary>
   </component>
@@ -79,26 +132,26 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1339" height="18" key="GridCell.Tab.0.bottom" timestamp="1580817013015">
+    <state width="1893" height="396" key="GridCell.Tab.0.bottom" timestamp="1580910825785">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.bottom/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817644" />
-    <state width="1339" height="18" key="GridCell.Tab.0.bottom/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580817013015" />
-    <state width="1339" height="18" key="GridCell.Tab.0.center" timestamp="1580817013015">
+    <state width="1893" height="396" key="GridCell.Tab.0.bottom/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580910825785" />
+    <state width="1893" height="396" key="GridCell.Tab.0.center" timestamp="1580910825784">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.center/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817644" />
-    <state width="1339" height="18" key="GridCell.Tab.0.center/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580817013015" />
-    <state width="1339" height="18" key="GridCell.Tab.0.left" timestamp="1580817013015">
+    <state width="1893" height="396" key="GridCell.Tab.0.center/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580910825784" />
+    <state width="1893" height="396" key="GridCell.Tab.0.left" timestamp="1580910825784">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.left/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817643" />
-    <state width="1339" height="18" key="GridCell.Tab.0.left/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580817013015" />
-    <state width="1339" height="18" key="GridCell.Tab.0.right" timestamp="1580817013015">
+    <state width="1893" height="396" key="GridCell.Tab.0.left/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580910825784" />
+    <state width="1893" height="396" key="GridCell.Tab.0.right" timestamp="1580910825785">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.right/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817644" />
-    <state width="1339" height="18" key="GridCell.Tab.0.right/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580817013015" />
+    <state width="1893" height="396" key="GridCell.Tab.0.right/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580910825785" />
     <state x="352" y="97" key="SettingsEditor" timestamp="1580817033742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
