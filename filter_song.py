@@ -70,9 +70,6 @@ for file1 in os.listdir(sel):  #repeat for all files in major or minor
         numProgs = numProgs + total
         numSongs = numSongs + 1
     else:
-<<<<<<< HEAD
-        print("No songs in directory!")
-=======
         print("Total: " + str(sum(answers.values())) + " Does not match: " + str(total) + "\n")
 
 stackedArray = np.empty(3) #new blank array for combining results
@@ -101,4 +98,3 @@ print(dash)
 
 # save finalArray to txt file
 np.savetxt('export.txt', finalArray, fmt='%s')
->>>>>>> leighton
