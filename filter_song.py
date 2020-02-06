@@ -6,7 +6,9 @@ import itertools as it
 import pandas as pd
 import os
 from collections import defaultdict
+from fractions import Fraction
 from numpy import savetxt
+
 numProgs = 0
 numSongs = 0
 

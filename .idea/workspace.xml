@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c7421d75-e40f-436e-b10e-bbf48563e269" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OUTPUT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OUTPUT.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/export.txt" beforeDir="false" afterPath="$PROJECT_DIR$/export.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filter_song.py" beforeDir="false" afterPath="$PROJECT_DIR$/filter_song.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/markov_chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/markov_chain.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,30 +134,30 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1893" height="262" key="GridCell.Tab.0.bottom" timestamp="1580988790426">
+    <state width="1893" height="300" key="GridCell.Tab.0.bottom" timestamp="1580999149227">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.bottom/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817644" />
-    <state width="1893" height="262" key="GridCell.Tab.0.bottom/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580988790426" />
-    <state width="1893" height="262" key="GridCell.Tab.0.center" timestamp="1580988790425">
+    <state width="1893" height="300" key="GridCell.Tab.0.bottom/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580999149227" />
+    <state width="1893" height="300" key="GridCell.Tab.0.center" timestamp="1580999149227">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.center/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817644" />
-    <state width="1893" height="262" key="GridCell.Tab.0.center/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580988790425" />
-    <state width="1893" height="262" key="GridCell.Tab.0.left" timestamp="1580988790425">
+    <state width="1893" height="300" key="GridCell.Tab.0.center/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580999149227" />
+    <state width="1893" height="300" key="GridCell.Tab.0.left" timestamp="1580999149227">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.left/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817643" />
-    <state width="1893" height="262" key="GridCell.Tab.0.left/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580988790425" />
-    <state width="1893" height="262" key="GridCell.Tab.0.right" timestamp="1580988790425">
+    <state width="1893" height="300" key="GridCell.Tab.0.left/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580999149227" />
+    <state width="1893" height="300" key="GridCell.Tab.0.right" timestamp="1580999149227">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1339" height="18" key="GridCell.Tab.0.right/-1366.559.1366.768/0.0.1920.1080@-1366.559.1366.768" timestamp="1580816817644" />
-    <state width="1893" height="262" key="GridCell.Tab.0.right/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580988790425" />
-    <state x="352" y="97" key="SettingsEditor" timestamp="1580817033742">
+    <state width="1893" height="300" key="GridCell.Tab.0.right/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580999149227" />
+    <state x="352" y="97" key="SettingsEditor" timestamp="1580998747873">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="352" y="97" key="SettingsEditor/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580817033742" />
+    <state x="352" y="97" key="SettingsEditor/-1366.559.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1580998747873" />
     <state x="539" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1580984719446">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -165,7 +168,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/markov_chain.py</url>
-          <line>122</line>
+          <line>120</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
