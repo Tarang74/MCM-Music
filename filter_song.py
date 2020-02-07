@@ -1,50 +1,56 @@
 # Created by Tarang Janawalkar
 # February 1, 2020
 
-import numpy as np
 import itertools as it
-import pandas as pd
 import os
 from collections import defaultdict
 from fractions import Fraction
-from numpy import savetxt
+
+import numpy as np
+import pandas as pd
+from numpy import savetxtF
 
 numProgs = 0
 numSongs = 0
 
 chords = ["A", "Am", "A#", "A#m",
-                "B", "Bm",
-                "C", "Cm", "C#", "C#m",
-                "D", "Dm", "D#", "D#m",
-                "E", "Em",
-                "F", "Fm", "F#", "F#m",
-                "G", "Gm", "G#", "G#m"] #list of all chords
+          "B", "Bm",
+          "C", "Cm", "C#", "C#m",
+          "D", "Dm", "D#", "D#m",
+          "E", "Em",
+          "F", "Fm", "F#", "F#m",
+          "G", "Gm", "G#", "G#m"]  # list of all chords
 
-progArray = np.asarray(list(it.product(chords, repeat=2))) #permutation of all chords (n^r)
+# permutation of all chords (n^r)
+progArray = np.asarray(list(it.product(chords, repeat=2)))
 
-dict = {} #empty dictionary for building pairs
+dict = {}  # empty dictionary for building pairs
 
-def listToString(s): #convert array values to string
+
+def listToString(s):  # convert array values to string
     str = " "
     return (str.join(s))
-sel = input("major or minor (LC): ") #input major or minor
 
-for file1 in os.listdir(sel):  #repeat for all files in major or minor
+
+sel = input("major or minor (LC): ")  # input major or minor
+
+for file1 in os.listdir(sel):  # repeat for all files in major or minor
     dir = sel + "/" + file1
-    f = open(dir, "r+") #open file
+    f = open(dir, "r+")  # open file
     songName = f.readline()
     songName = songName.strip("#")
     songName = songName.rstrip()
 
-    lines = f.readlines() #gather file contents
-    f.close() #close file
+    lines = f.readlines()  # gather file contents
+    f.close()  # close file
 
-    a = '\t'.join([line.strip() for line in lines]) #remove multispaces
-    a = a.replace('N.C.', '') #remove "No Chords" "C" may be recognised unintentionally
-    a = ' '.join(a.split()) #split all words with space
+    a = '\t'.join([line.strip() for line in lines])  # remove multispaces
+    # remove "No Chords" "C" may be recognised unintentionally
+    a = a.replace('N.C.', '')
+    a = ' '.join(a.split())  # split all words with space
 
-    chordProg = [w for w in a.split() if w in chords] #remove all but chords
-    total = len(chordProg) - 1 #number of chord progressions
+    chordProg = [w for w in a.split() if w in chords]  # remove all but chords
+    total = len(chordProg) - 1  # number of chord progressions
 
     answers = defaultdict(int)
 
@@ -72,25 +78,26 @@ for file1 in os.listdir(sel):  #repeat for all files in major or minor
         numProgs = numProgs + total
         numSongs = numSongs + 1
     else:
-        print("Total: " + str(sum(answers.values())) + " Does not match: " + str(total) + "\n")
+        print("Total: " + str(sum(answers.values())) +
+              " Does not match: " + str(total) + "\n")
 
-stackedArray = np.empty(3) #new blank array for combining results
+stackedArray = np.empty(3)  # new blank array for combining results
 
-for i in dict: #loop to combine results
+for i in dict:  # loop to combine results
     stackedArray = np.vstack((stackedArray, dict[i]))
 stackedArray = np.delete(stackedArray, 0, 0)
 
-dict2 = {} #new blank dictionary
+dict2 = {}  # new blank dictionary
 
 for elem in stackedArray:
     key = tuple(elem[:-1])
     value = int(elem[-1])
-    dict2[key] = dict2.get(key,0) + value
+    dict2[key] = dict2.get(key, 0) + value
 
 finalArray = [[*key, value] for key, value in dict2.items()]
 finalArray = np.array(finalArray)
 
-#provide output to user
+# provide output to user
 print("\n")
 dash = '-' * 42
 line = "|"
