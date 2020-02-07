@@ -8,7 +8,7 @@ from fractions import Fraction
 
 import numpy as np
 import pandas as pd
-from numpy import savetxtF
+from numpy import savetxt
 
 numProgs = 0
 numSongs = 0
