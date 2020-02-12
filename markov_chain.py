@@ -108,7 +108,7 @@ print("Sum of matrix columns:")
 print(sum)
 print(dash)
 
-start = input("Enter starting note: ")  # Starting note
+start = "A"  # input("Enter starting note: ")  # Starting note
 startMatrix = np.zeros((24, 1))  # All other notes have 0 probability
 
 currentProbability = int

@@ -32,7 +32,7 @@ def listToString(s):  # convert array values to string
     return (str.join(s))
 
 
-sel = input("major or minor (LC): ")  # input major or minor
+sel = "major"  # input("major or minor (LC): ")  # input major or minor
 
 for file1 in os.listdir(sel):  # repeat for all files in major or minor
     dir = sel + "/" + file1
