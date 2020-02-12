@@ -8,7 +8,6 @@ import os
 
 import numpy as np
 import sympy as sy
-import pychord as c
 from filter_song import *
 
 states = ["A", "Am", "A#", "A#m",

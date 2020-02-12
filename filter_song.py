@@ -4,7 +4,6 @@
 import itertools as it
 import os
 from collections import defaultdict
-from fractions import Fraction
 
 import numpy as np
 import pandas as pd
