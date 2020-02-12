@@ -1,12 +1,12 @@
 # Created by Tarang Janawalkar
-# February 1, 2020
+# February 12, 2020
 
-import os
 import os.path
 import midiutil as mu
 from midiutil.MidiFile import MIDIFile
-from markov_chain import *
 from datetime import datetime
+from markov_chain import *
+
 
 date = datetime.now().strftime("%y_%m_%d_%H_%M_%S")
 

@@ -3,11 +3,6 @@
 # Modified for all chords by Tarang Janawalkar
 # February 5, 2020
 
-import itertools as it
-import os
-
-import numpy as np
-import sympy as sy
 from filter_song import *
 
 states = ["A", "Am", "A#", "A#m",

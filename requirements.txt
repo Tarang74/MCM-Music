@@ -1,5 +1,4 @@
 itertools
 pandas
-sympy
 numpy
 midiutil
