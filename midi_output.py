@@ -78,13 +78,19 @@ endMatrixExport = "EndMatrix.txt"
 with open(endMatrixExport, "w") as outfile:
     np.savetxt(outfile, endMatrix, fmt='%1.6f')
 
+finalChordsExport = "Chords.txt"
+with open(finalChordsExport, "w") as outfile:
+    np.savetxt(outfile, finalChords, fmt="%s")
+
 newMidName = "output/" + name + "/" + midName
 newMarkovMatrixName = "output/" + name + "/" + markovMatrixExport
 newEndMatrixName = "output/" + name + "/" + endMatrixExport
+newFinalChordsName = "output/" + name + "/" + finalChordsExport
 
 os.rename(midName, newMidName)
 os.rename(markovMatrixExport, newMarkovMatrixName)
 os.rename(endMatrixExport, newEndMatrixName)
+os.rename(finalChordsExport, newFinalChordsName)
 
 print(dash5)
 print("Process completed.")

@@ -3,6 +3,7 @@
 # Modified for all chords by Tarang Janawalkar
 # February 5, 2020
 
+import math
 from filter_song import *
 
 tName = []  # Transition names (eg. A-Bm)
@@ -10,7 +11,7 @@ tOccr = []  # Occurance matrix
 tProb = []  # Probabilities matrix
 tProbR = []  # Rounded Probabilities matrix
 sumArry = []
-dash2 = "-" * 175
+dash2 = "-" * 7 * (len(states) + 1)
 
 for i in states:  # for every chord
     tI = []  # create temporary arrays
@@ -25,6 +26,8 @@ for i in states:  # for every chord
     tProb.append(tK)
 
 data = finalArray
+printtext = math.floor((3.5 * len(states)) - 3.5)
+
 for i in range(len(data)):
     if i == 0:
         print(dash)
@@ -65,7 +68,7 @@ print("\n")
 for i in range(len(tOccr)):
     if i == 0:
         print(dash2)
-        print('{:>81s}{:s}'.format("", "Chord Matrix:"))
+        print(" " * printtext, "Chord Matrix:")
         print(dash2)
         m = len(states)
         a = "{:<7}" * m
@@ -100,12 +103,12 @@ for j in range(len(states)):
     c = c + "sumArry[" + str(j) + "], "
 out = b + c + d
 print(eval(out))
-
+printtext1 = math.floor((3.5 * len(states)) - 5.5)
 print("\n")
 for i in range(len(tProb)):
     if i == 0:
         print(dash2)
-        print('{:>78s}{:s}'.format("", "Transition Matrix:"))
+        print(" " * printtext1, "Transition Matrix:")
         print(dash2)
         m = len(states)
         a = "{:<7}" * m
@@ -192,3 +195,16 @@ for i in range(len(chordGeneration)):
 
 print(finalChords)
 print("\n")
+
+p = 50
+q = p + 1
+steadyState = np.around(np.linalg.matrix_power(markovMatrix, p), 3)
+steadyState1 = np.around(np.linalg.matrix_power(markovMatrix, q), 3)
+while np.array_equal(steadyState, steadyState1) == False:
+    p += 1
+
+print(p)
+steadyState = np.linalg.matrix_power(markovMatrix, p)
+
+print("Steady state at: " + str(p) + " transitions")
+print(steadyState)
