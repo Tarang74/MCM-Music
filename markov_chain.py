@@ -190,8 +190,7 @@ for i in range(1, multPower):
     # print(prob)  # Each column matrix probability
 
 for i in range(len(chordGeneration)):
-    
-print(chordGeneration)
+    print(chordGeneration)
 
 finalChords = [""] * multPower
 

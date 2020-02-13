@@ -14,7 +14,7 @@ mf = MIDIFile(1)  # only 1 track
 track = 0  # the only track
 
 time = 0  # start at beginning
-name = str(date) + "-" + str(multPower)
+#name = str(date) + "-" + str(multPower)
 
 mf.addTrackName(track, time, "output")
 mf.addTempo(track, time, 90)
@@ -61,8 +61,8 @@ for i in range(len(chordGeneration)):
     mf.addNote(track, channel, pitch2, time, duration, volume)
     mf.addNote(track, channel, pitch3, time, duration, volume)
 
-newdir = "output/" + name + "/"
-os.makedirs(newdir)
+#newdir = "output/"# + name + "/"
+#os.makedirs(newdir)
 
 midName = "output.mid"
 with open(midName, "wb") as outfile:
@@ -76,9 +76,9 @@ endMatrixExport = "EndMatrix.txt"
 with open(endMatrixExport, "w") as outfile:
     np.savetxt(outfile, endMatrix, fmt='%1.6f')
 
-newMidName = "output/" + name + "/" + midName
-newMarkovMatrixName = "output/" + name + "/" + markovMatrixExport
-newEndMatrixName = "output/" + name + "/" + endMatrixExport
+newMidName = "output/" + midName
+newMarkovMatrixName = "output/" + markovMatrixExport
+newEndMatrixName = "output/" + endMatrixExport
 
 os.rename(midName, newMidName)
 os.rename(markovMatrixExport, newMarkovMatrixName)
