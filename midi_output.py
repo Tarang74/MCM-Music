@@ -14,7 +14,7 @@ mf = MIDIFile(1)  # only 1 track
 track = 0  # the only track
 
 time = 0  # start at beginning
-name = str(date) + "-" + str(multPower)
+name = str(date) + "-T" + str(multPower)
 
 mf.addTrackName(track, time, "output")
 mf.addTempo(track, time, 90)
