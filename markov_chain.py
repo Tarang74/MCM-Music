@@ -175,6 +175,7 @@ print(dash4)
 print("\n")
 
 print("Chord Progression for " + str(multPower) + " transitions:")
+print("\n")
 
 statesIndex = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -189,10 +190,8 @@ for i in range(1, multPower):
     chordGeneration[i] = np.random.choice(statesIndex, p=prob)
     # print(prob)  # Each column matrix probability
 
-for i in range(len(chordGeneration)):
-    
 print(chordGeneration)
-
+print("\n")
 finalChords = [""] * multPower
 
 for i in range(len(chordGeneration)):
@@ -200,3 +199,4 @@ for i in range(len(chordGeneration)):
     finalChords[i] = states[a]
 
 print(finalChords)
+print("\n")

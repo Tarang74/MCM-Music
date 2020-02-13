@@ -7,6 +7,8 @@ from midiutil.MidiFile import MIDIFile
 from datetime import datetime
 from markov_chain import *
 
+dash5 = "-" * 18
+
 date = datetime.now().strftime("%y_%m_%d_%H_%M_%S")
 
 # create MIDI object
@@ -84,6 +86,6 @@ os.rename(midName, newMidName)
 os.rename(markovMatrixExport, newMarkovMatrixName)
 os.rename(endMatrixExport, newEndMatrixName)
 
-print(dash)
+print(dash5)
 print("Process completed.")
-print(dash)
+print(dash5)
