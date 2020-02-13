@@ -5,20 +5,11 @@
 
 from filter_song import *
 
-states = [
-    "A", "Am", "A#", "A#m", "B", "Bm", "C", "Cm", "C#", "C#m", "D", "Dm", "D#",
-    "D#m", "E", "Em", "F", "Fm", "F#", "F#m", "G", "Gm", "G#", "G#m"
-]  # All possible chords that can be combined
 tName = []  # Transition names (eg. A-Bm)
 tOccr = []  # Occurance matrix
 tProb = []  # Probabilities matrix
 tProbR = []  # Rounded Probabilities matrix
 sumArry = []
-sumTcol = []
-xyMtrx = [
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
-    "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"
-]
 dash2 = "-" * 175
 
 for i in states:  # for every chord
@@ -76,33 +67,39 @@ for i in range(len(tOccr)):
         print(dash2)
         print('{:>81s}{:s}'.format("", "Chord Matrix:"))
         print(dash2)
-        print(
-            '{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}'
-            .format(states[0], states[1], states[2], states[3], states[4],
-                    states[5], states[6], states[7], states[8], states[9],
-                    states[10], states[11], states[12], states[13], states[14],
-                    states[15], states[16], states[17], states[18], states[19],
-                    states[20], states[21], states[22], states[23]))
+        m = len(states)
+        a = "{:<7}" * m
+        b = "'" + a + "'.format("
+        c = ""
+        d = ")"
+        for j in range(len(states)):
+            c = c + "states[" + str(j) + "], "
+        out = b + c + d
+        print(eval(out))
         print(dash2)
-    print(
-        "{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<2s}{:<4s}{:<2s}"
-        .format(tOccr[i][0], tOccr[i][1], tOccr[i][2], tOccr[i][3],
-                tOccr[i][4], tOccr[i][5], tOccr[i][6], tOccr[i][7],
-                tOccr[i][8], tOccr[i][9], tOccr[i][10], tOccr[i][11],
-                tOccr[i][12], tOccr[i][13], tOccr[i][14], tOccr[i][15],
-                tOccr[i][16], tOccr[i][17], tOccr[i][18], tOccr[i][19],
-                tOccr[i][20], tOccr[i][21], tOccr[i][22], tOccr[i][23], line,
-                states[i], line))
+
+    m = len(states)
+    a = "{:<7}" * m + "{:<2s}{:<4s}{:<2s}"
+    b = "'" + a + "'.format("
+    c = ""
+    d = " line, states[i], line)"
+    for j in range(len(states)):
+        c = c + "tOccr[" + "i][" + str(j) + "], "
+    out = b + c + d
+    print(eval(out))
+
 # Sum Output
 print(dash2)
-print(
-    "{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<2s}{:<4s}{:<2s}"
-    .format(sumArry[0], sumArry[1], sumArry[2], sumArry[3], sumArry[4],
-            sumArry[5], sumArry[6], sumArry[7], sumArry[8], sumArry[9],
-            sumArry[10], sumArry[11], sumArry[12], sumArry[13], sumArry[14],
-            sumArry[15], sumArry[16], sumArry[17], sumArry[18], sumArry[19],
-            sumArry[20], sumArry[21], sumArry[22], sumArry[23], line, "Tot",
-            line))
+
+m = len(states)
+a = "{:<7}" * m + "{:<2s}{:<4s}{:<2s}"
+b = "'" + a + "'.format("
+c = ""
+d = " line, 'Tot', line)"
+for j in range(len(states)):
+    c = c + "sumArry[" + str(j) + "], "
+out = b + c + d
+print(eval(out))
 
 print("\n")
 for i in range(len(tProb)):
@@ -110,29 +107,27 @@ for i in range(len(tProb)):
         print(dash2)
         print('{:>78s}{:s}'.format("", "Transition Matrix:"))
         print(dash2)
-        print(
-            '{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}'
-            .format(states[0], states[1], states[2], states[3], states[4],
-                    states[5], states[6], states[7], states[8], states[9],
-                    states[10], states[11], states[12], states[13], states[14],
-                    states[15], states[16], states[17], states[18], states[19],
-                    states[20], states[21], states[22], states[23]))
+        m = len(states)
+        a = "{:<7}" * m
+        b = "'" + a + "'.format("
+        c = ""
+        d = ")"
+        for j in range(len(states)):
+            c = c + "states[" + str(j) + "], "
+        out = b + c + d
+        print(eval(out))
         print(dash2)
-    print(
-        "{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<7}{:<2s}{:<4s}{:<2s}"
-        .format(round(tProb[i][0], 4), round(tProb[i][1], 4),
-                round(tProb[i][2], 4), round(tProb[i][3], 4),
-                round(tProb[i][4], 4), round(tProb[i][5], 4),
-                round(tProb[i][6], 4), round(tProb[i][7], 4),
-                round(tProb[i][8], 4), round(tProb[i][9], 4),
-                round(tProb[i][10], 4), round(tProb[i][11], 4),
-                round(tProb[i][12], 4), round(tProb[i][13], 4),
-                round(tProb[i][14], 4), round(tProb[i][15], 4),
-                round(tProb[i][16], 4), round(tProb[i][17], 4),
-                round(tProb[i][18], 4), round(tProb[i][19], 4),
-                round(tProb[i][20], 4), round(tProb[i][21], 4),
-                round(tProb[i][22], 4), round(tProb[i][23], 4), line,
-                states[i], line))
+
+    m = len(states)
+    a = "{:<7}" * m + "{:<2s}{:<4s}{:<2s}"
+    b = "'" + a + "'.format("
+    c = ""
+    d = " line, states[i], line)"
+    for j in range(len(states)):
+        c = c + "round(tProb[" + "i][" + str(j) + "], 4), "
+    out = b + c + d
+    print(eval(out))
+
 print(dash2)
 print("\n")
 
@@ -148,7 +143,7 @@ print(dash3)
 print("\n")
 
 start = "A"  # input("Enter starting note: ")  # Starting note
-startMatrix = np.zeros((24, 1))  # All other notes have 0 probability
+startMatrix = np.zeros((len(states), 1))  # All other notes have 0 probability
 
 currentProbability = int
 for i in range(len(states)):  # Set 1, to row of startMatrix
@@ -177,10 +172,7 @@ print("\n")
 print("Chord Progression for " + str(multPower) + " transitions:")
 print("\n")
 
-statesIndex = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23
-]
+statesIndex = np.arange(0, len(states))
 chordGeneration = np.zeros(multPower, dtype=int)
 
 for i in range(1, multPower):

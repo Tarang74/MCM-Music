@@ -103,3 +103,18 @@ print(" Found ", numProgs, " progressions from ", numSongs, " songs")
 print(dash)
 
 np.savetxt("export.txt", finalArray, fmt="%s")  # save finalArray to txt file
+
+states = np.unique(finalArray)
+delete = np.array([], dtype=np.int)
+
+for i in range(len(states)):
+    try:
+        a = int(states[i]) + 1
+    except ValueError:
+        continue
+    else:
+        delete = np.append(delete, i)
+
+states = np.delete(states, delete)
+print("Chords Used: ")
+print(states)
