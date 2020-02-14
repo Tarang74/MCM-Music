@@ -4,6 +4,8 @@
 # February 5, 2020
 
 import math
+import matplotlib as mpl
+import matplotlib.pyplot as plot
 from filter_song import *
 
 tName = []  # Transition names (eg. A-Bm)
@@ -161,7 +163,7 @@ print(dash4)
 print(np.squeeze(markovMatrix[:, currentProbability]))
 print(dash4)
 print("\n")
-multPower = int(input("Number of Transition events: "))
+multPower = 5  # int(input("Number of Transition events: "))
 print("\n")
 print(dash4)
 print("End Probability Matrix:")
@@ -196,15 +198,73 @@ for i in range(len(chordGeneration)):
 print(finalChords)
 print("\n")
 
-p = 50
+p = 1
 q = p + 1
-steadyState = np.around(np.linalg.matrix_power(markovMatrix, p), 3)
-steadyState1 = np.around(np.linalg.matrix_power(markovMatrix, q), 3)
-while np.array_equal(steadyState, steadyState1) == False:
-    p += 1
 
-print(p)
+steadyState = np.linalg.matrix_power(markovMatrix, p)
+steadyState1 = np.linalg.matrix_power(markovMatrix, q)
+
+while np.array_equal(np.around(steadyState, 5), np.around(steadyState1,
+                                                          5)) == False:
+    steadyState = np.linalg.matrix_power(markovMatrix, p)
+    steadyState1 = np.linalg.matrix_power(markovMatrix, q)
+    p += 1
+    q = p + 1
+
 steadyState = np.linalg.matrix_power(markovMatrix, p)
 
 print("Steady state at: " + str(p) + " transitions")
-print(steadyState)
+print(np.around(np.squeeze(steadyState), 3))
+print("\n")
+
+states1 = states
+states1 = [s.replace("#", "s") for s in states1]
+
+execcreatearray = ""
+for i in range(len(states1)):
+    execcreatearray = execcreatearray + "plot" + str(
+        states1[i]) + " = []" + "\n"
+
+exec(execcreatearray)
+
+for i in range(p):
+    for j in range(len(states1)):
+        exec("plot" + str(states1[j]) + " = np.append(plot" + str(states1[j]) +
+             ", np.squeeze(np.dot(np.linalg.matrix_power(markovMatrix, " +
+             str(i) + "), startMatrix))[" + str(j) + "])")
+
+dfexec = ""
+for i in range(len(states1)):
+    dfexec = dfexec + "'" + str(states1[i]) + "': plot" + str(
+        states1[i]) + ", "
+
+exec("df = pd.DataFrame({'x': range(0, " + str(p) + ")," + dfexec + "})")
+
+print(df)
+
+plot.style.use('seaborn-white')
+palette = plot.get_cmap('Set1')
+
+num = 0
+for column in df.drop('x', axis=1):
+    num += 1
+    plot.plot(df['x'],
+              df[column],
+              marker='',
+              color=palette(num),
+              linewidth=1,
+              alpha=0.9,
+              label=column)
+
+plot.legend(loc=2, ncol=2)
+
+plot.title("State Point Probability vs. Transition #",
+           loc='center',
+           fontsize=12,
+           fontweight=0,
+           color='black')
+plot.xlabel("Transitions")
+plot.ylabel("Probability")
+plot.show()
+
+plot.savefig('ProbabilityPlot.png')

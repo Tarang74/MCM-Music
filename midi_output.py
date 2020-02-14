@@ -82,15 +82,19 @@ finalChordsExport = "Chords.txt"
 with open(finalChordsExport, "w") as outfile:
     np.savetxt(outfile, finalChords, fmt="%s")
 
+plotExport = "ProbabilityPlot.png"
+
 newMidName = "output/" + name + "/" + midName
 newMarkovMatrixName = "output/" + name + "/" + markovMatrixExport
 newEndMatrixName = "output/" + name + "/" + endMatrixExport
 newFinalChordsName = "output/" + name + "/" + finalChordsExport
+newPlotName = "output/" + name + "/" + plotExport
 
 os.rename(midName, newMidName)
 os.rename(markovMatrixExport, newMarkovMatrixName)
 os.rename(endMatrixExport, newEndMatrixName)
 os.rename(finalChordsExport, newFinalChordsName)
+os.rename(plotExport, newPlotName)
 
 print(dash5)
 print("Process completed.")
