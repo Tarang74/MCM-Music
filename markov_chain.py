@@ -107,6 +107,7 @@ out = b + c + d
 print(eval(out))
 printtext1 = math.floor((3.5 * len(states)) - 5.5)
 print("\n")
+
 for i in range(len(tProb)):
     if i == 0:
         print(dash2)
@@ -140,30 +141,28 @@ markovMatrix = np.asarray([tProb])
 # Sum of columns in Markov Matrix
 sum = np.squeeze(np.sum(a=markovMatrix, axis=1, dtype=float))
 dash3 = "-" * 73
-print(dash3)
-print("{:<25}{:s}".format("", "Sum of matrix columns:"))
-print(dash3)
-print(sum)
-print(dash3)
-print("\n")
+# print(dash3)
+# print("{:<25}{:s}".format("", "Sum of matrix columns:"))
+# print(dash3)
+# print(sum)
+# print(dash3)
+# print("\n")
 
 start = "A"  # input("Enter starting note: ")  # Starting note
 startMatrix = np.zeros((len(states), 1))  # All other notes have 0 probability
 
-currentProbability = int
 for i in range(len(states)):  # Set 1, to row of startMatrix
     if start == states[i]:
         startMatrix[i][0] = 1
-        currentProbability = i
 
 dash4 = "-" * 67
 print(dash4)
 print("{:<20}{:s}".format("", "Start Probability Matrix:"))
 print(dash4)
-print(np.squeeze(markovMatrix[:, currentProbability]))
+print(np.squeeze(np.dot(markovMatrix, startMatrix)))
 print(dash4)
 print("\n")
-multPower = 5  # int(input("Number of Transition events: "))
+multPower = int(input("Number of Transition events: "))
 print("\n")
 print(dash4)
 print("End Probability Matrix:")
@@ -180,12 +179,14 @@ print("\n")
 statesIndex = np.arange(0, len(states))
 chordGeneration = np.zeros(multPower, dtype=int)
 
-for i in range(1, multPower):
+for i in range(0, multPower):
     prob = np.dot(np.linalg.matrix_power(markovMatrix, i), startMatrix)
     prob = np.squeeze(prob).tolist()
 
     chordGeneration[i] = np.random.choice(statesIndex, p=prob)
-    # print(prob)  # Each column matrix probability
+    print("It no: ", i)
+    print(np.round(prob, 4))  # Each column matrix probability
+    print("\n")
 
 for i in range(len(chordGeneration)):
     print(chordGeneration)
@@ -215,7 +216,7 @@ while np.array_equal(np.around(steadyState, 5), np.around(steadyState1,
 steadyState = np.linalg.matrix_power(markovMatrix, p)
 
 print("Steady state at: " + str(p) + " transitions")
-print(np.around(np.squeeze(steadyState), 3))
+#print(np.around(np.squeeze(steadyState), 3))
 print("\n")
 
 states1 = states
@@ -241,8 +242,6 @@ for i in range(len(states1)):
 
 exec("df = pd.DataFrame({'x': range(0, " + str(p) + ")," + dfexec + "})")
 
-print(df)
-
 plot.style.use('seaborn-white')
 palette = plot.get_cmap('Set1')
 
@@ -266,6 +265,9 @@ plot.title("State Point Probability vs. Transition #",
            color='black')
 plot.xlabel("Transitions")
 plot.ylabel("Probability")
-plot.show()
 
-plot.savefig('ProbabilityPlot.png')
+if (os.path.exists("output/ProbabilityPlot.png") == True):
+    os.remove("output/ProbabilityPlot.png")
+    plot.savefig('output/ProbabilityPlot.png')
+else:
+    plot.savefig('output/ProbabilityPlot.png')

@@ -28,13 +28,12 @@ def listToString(s):  # convert array values to string
     return str.join(s)
 
 
-sel = "major"  # input("major or minor (LC): ")  # input major or minor
+sel = "test"  # input("Select folder: ")  # input major or minor
 
 for file1 in os.listdir(sel):  # repeat for all files in major or minor
     dir = sel + "/" + file1
     f = open(dir, "r+")  # open file
     songName = f.readline()
-    songName = songName.strip("#")
     songName = songName.rstrip()
 
     lines = f.readlines()  # gather file contents
@@ -43,6 +42,7 @@ for file1 in os.listdir(sel):  # repeat for all files in major or minor
     a = "\t".join([line.strip() for line in lines])  # remove multispaces
     # remove "No Chords" "C" may be recognised unintentionally
     a = a.replace("N.C.", "")
+    a = a.replace("*", "")
     a = " ".join(a.split())  # split all words with space
 
     chordProg = [w for w in a.split() if w in chords]  # remove all but chords
@@ -102,7 +102,12 @@ print(dash)
 print(" Found ", numProgs, " progressions from ", numSongs, " songs")
 print(dash)
 
-np.savetxt("export.txt", finalArray, fmt="%s")  # save finalArray to txt file
+if (os.path.exists("output/TransitionList.txt") == True):
+    os.remove("output/TransitionList.txt")  # delete if already exists
+    np.savetxt("output/TransitionList.txt", finalArray, fmt="%s")
+else:
+    np.savetxt("output/TransitionList.txt", finalArray,
+               fmt="%s")  # save finalArray to txt file
 
 states = np.unique(finalArray)
 delete = np.array([], dtype=np.int)
