@@ -2,3 +2,4 @@ itertools
 pandas
 numpy
 midiutil
+matplotlib
