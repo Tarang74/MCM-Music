@@ -7,7 +7,7 @@ from midiutil.MidiFile import MIDIFile
 from datetime import datetime
 from markov_chain import *
 
-dash5 = "-" * 18
+dash5 = "-" * 45
 
 date = datetime.now().strftime("%y_%m_%d_%H_%M_%S")
 
@@ -48,16 +48,16 @@ pitchArray = [
     [79, 83, 86],  # G   - G  B  D
     [79, 82, 86],  # Gm  - G  A# D
     [80, 84, 87],  # G#  - G# C  D#
-    [80, 83, 87]
-]  # G#m - G# B  D#
+    [80, 83, 87]  # G#m - G# B  D#
+]
 
 for i in range(len(chordGeneration)):
     a = chordGeneration[i]
     pitch1 = pitchArray[a][0]
     pitch2 = pitchArray[a][1]
     pitch3 = pitchArray[a][2]
-    time = i
-    duration = 1
+    time = 2 * i
+    duration = 2
 
     mf.addNote(track, channel, pitch1, time, duration, volume)
     mf.addNote(track, channel, pitch2, time, duration, volume)
@@ -110,5 +110,5 @@ else:
         np.savetxt(outfile, finalChords, fmt="%s")
 
 print(dash5)
-print("Process completed.")
+print("Process completed. Check //output/ for files.")
 print(dash5)
