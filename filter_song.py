@@ -9,6 +9,9 @@ import numpy as np
 import pandas as pd
 from numpy import savetxt
 
+if (os.path.exists("output") == False):
+    os.makedirs("output")
+
 numProgs = 0
 numSongs = 0
 
@@ -28,13 +31,11 @@ def listToString(s):  # convert array values to string
     return str.join(s)
 
 
-sel = "test"  # input("Select folder: ")  # input major or minor
+sel = "major"  # input("Select folder: ")  # input major or minor
 
 for file1 in os.listdir(sel):  # repeat for all files in major or minor
     dir = sel + "/" + file1
     f = open(dir, "r+")  # open file
-    songName = f.readline()
-    songName = songName.rstrip()
 
     lines = f.readlines()  # gather file contents
     f.close()  # close file
@@ -50,7 +51,7 @@ for file1 in os.listdir(sel):  # repeat for all files in major or minor
 
     answers = defaultdict(int)
 
-    for i in range(progArray.shape[0]):
+    for i in range(0, progArray.shape[0]):
         s = progArray[i]
         newProgArray = listToString(s)
         for j in range(len(chordProg) - 1):

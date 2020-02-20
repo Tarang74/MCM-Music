@@ -162,7 +162,7 @@ print(dash4)
 print(np.squeeze(np.dot(markovMatrix, startMatrix)))
 print(dash4)
 print("\n")
-multPower = int(input("Number of Transition events: "))
+multPower = int(input("Number of Transition events: ")) + 1
 print("\n")
 print(dash4)
 print("End Probability Matrix:")
@@ -171,9 +171,6 @@ endMatrix = np.squeeze(
     np.dot(np.linalg.matrix_power(markovMatrix, i), startMatrix))
 print(endMatrix)
 print(dash4)
-print("\n")
-
-print("Chord Progression for " + str(multPower) + " transitions:")
 print("\n")
 
 statesIndex = np.arange(0, len(states))
@@ -187,6 +184,9 @@ for i in range(0, multPower):
     print("It no: ", i)
     print(np.round(prob, 4))  # Each column matrix probability
     print("\n")
+
+print("Chord Progression for " + str(multPower - 1) + " transitions:")
+print("\n")
 
 print(chordGeneration)
 print("\n")
