@@ -102,7 +102,12 @@ print(dash)
 print(" Found ", numProgs, " progressions from ", numSongs, " songs")
 print(dash)
 
-np.savetxt("export.txt", finalArray, fmt="%s")  # save finalArray to txt file
+if (os.path.exists("output/TransitionList.txt") == True):
+    os.remove("output/TransitionList.txt")  # delete if already exists
+    np.savetxt("output/TransitionList.txt", finalArray, fmt="%s")
+else:
+    np.savetxt("output/TransitionList.txt", finalArray,
+               fmt="%s")  # save finalArray to txt file
 
 states = np.unique(finalArray)
 delete = np.array([], dtype=np.int)

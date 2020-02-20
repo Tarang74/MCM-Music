@@ -163,7 +163,7 @@ print(dash4)
 print(np.squeeze(markovMatrix[:, currentProbability]))
 print(dash4)
 print("\n")
-multPower = 5  # int(input("Number of Transition events: "))
+multPower = int(input("Number of Transition events: "))
 print("\n")
 print(dash4)
 print("End Probability Matrix:")
@@ -265,6 +265,9 @@ plot.title("State Point Probability vs. Transition #",
            color='black')
 plot.xlabel("Transitions")
 plot.ylabel("Probability")
-plot.show()
 
-plot.savefig('ProbabilityPlot.png')
+if (os.path.exists("output/ProbabilityPlot.png") == True):
+    os.remove("output/ProbabilityPlot.png")
+    plot.savefig('output/ProbabilityPlot.png')
+else:
+    plot.savefig('output/ProbabilityPlot.png')

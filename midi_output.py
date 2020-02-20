@@ -63,38 +63,51 @@ for i in range(len(chordGeneration)):
     mf.addNote(track, channel, pitch2, time, duration, volume)
     mf.addNote(track, channel, pitch3, time, duration, volume)
 
-newdir = "output/" + name + "/"
-os.makedirs(newdir)
+if (os.path.exists("output/output.mid") == True):
+    os.remove("output/output.mid")
+    midName = "output/output.mid"
+    with open(midName, "wb") as outfile:
+        mf.writeFile(outfile)
+else:
+    midName = "output/output.mid"
+    with open(midName, "wb") as outfile:
+        mf.writeFile(outfile)
 
-midName = "output.mid"
-with open(midName, "wb") as outfile:
-    mf.writeFile(outfile)
+if (os.path.exists("output/MarkovMatrix.csv") == True):
+    os.remove("output/MarkovMatrix.csv")
+    markovMatrixExport = "output/MarkovMatrix.csv"
+    with open(markovMatrixExport, "w") as outfile:
+        np.savetxt(outfile,
+                   np.squeeze(markovMatrix),
+                   fmt='%1.6f',
+                   delimiter=',')
+else:
+    markovMatrixExport = "output/MarkovMatrix.csv"
+    with open(markovMatrixExport, "w") as outfile:
+        np.savetxt(outfile,
+                   np.squeeze(markovMatrix),
+                   fmt='%1.6f',
+                   delimiter=',')
 
-markovMatrixExport = "MarkovMatrix.csv"
-with open(markovMatrixExport, "w") as outfile:
-    np.savetxt(outfile, np.squeeze(markovMatrix), fmt='%1.6f', delimiter=',')
+if (os.path.exists("output/EndMatrix.txt") == True):
+    os.remove("output/EndMatrix.txt")
+    endMatrixExport = "output/EndMatrix.txt"
+    with open(endMatrixExport, "w") as outfile:
+        np.savetxt(outfile, endMatrix, fmt='%1.6f')
+else:
+    endMatrixExport = "output/EndMatrix.txt"
+    with open(endMatrixExport, "w") as outfile:
+        np.savetxt(outfile, endMatrix, fmt='%1.6f')
 
-endMatrixExport = "EndMatrix.txt"
-with open(endMatrixExport, "w") as outfile:
-    np.savetxt(outfile, endMatrix, fmt='%1.6f')
-
-finalChordsExport = "Chords.txt"
-with open(finalChordsExport, "w") as outfile:
-    np.savetxt(outfile, finalChords, fmt="%s")
-
-plotExport = "ProbabilityPlot.png"
-
-newMidName = "output/" + name + "/" + midName
-newMarkovMatrixName = "output/" + name + "/" + markovMatrixExport
-newEndMatrixName = "output/" + name + "/" + endMatrixExport
-newFinalChordsName = "output/" + name + "/" + finalChordsExport
-newPlotName = "output/" + name + "/" + plotExport
-
-os.rename(midName, newMidName)
-os.rename(markovMatrixExport, newMarkovMatrixName)
-os.rename(endMatrixExport, newEndMatrixName)
-os.rename(finalChordsExport, newFinalChordsName)
-os.rename(plotExport, newPlotName)
+if (os.path.exists("output/GeneratedChords.txt") == True):
+    os.remove("output/GeneratedChords.txt")
+    finalChordsExport = "output/GeneratedChords.txt"
+    with open(finalChordsExport, "w") as outfile:
+        np.savetxt(outfile, finalChords, fmt="%s")
+else:
+    finalChordsExport = "output/GeneratedChords.txt"
+    with open(finalChordsExport, "w") as outfile:
+        np.savetxt(outfile, finalChords, fmt="%s")
 
 print(dash5)
 print("Process completed.")
