@@ -162,7 +162,46 @@ print(dash4)
 print(np.squeeze(np.dot(markovMatrix, startMatrix)))
 print(dash4)
 print("\n")
-multPower = int(input("Number of Transition events: ")) + 1
+
+p = 1
+q = p + 1
+
+steadyState = np.linalg.matrix_power(markovMatrix, p)
+steadyState1 = np.linalg.matrix_power(markovMatrix, q)
+
+while np.array_equal(np.around(steadyState, 3), np.around(steadyState1,
+                                                          3)) == False:
+    steadyState = np.linalg.matrix_power(markovMatrix, p)
+    steadyState1 = np.linalg.matrix_power(markovMatrix, q)
+    p += 1
+    q = p + 1
+
+steadyState = np.linalg.matrix_power(markovMatrix, p)
+
+print("Steady state at: " + str(p) + " transitions")
+print(np.around(np.squeeze(steadyState), 3))
+print("\n")
+
+multPowerBool = False
+multPower = int
+
+while (multPowerBool == False):
+    try:
+        multPower = int(input("Number of Transition events: ")) + 1
+    except ValueError:
+        multPowerBool = False
+    else:
+        if (multPower >= 0):
+            multPowerBool = True
+
+mORsBool = False
+mORs = str
+
+while (mORsBool == False):
+    mORs = str(input("Use iterative calculation or steady state? (i/s): "))
+    if (mORs == "i" or mORs == "s"):
+        mORsBool = True
+
 print("\n")
 print(dash4)
 print("End Probability Matrix:")
@@ -176,14 +215,30 @@ print("\n")
 statesIndex = np.arange(0, len(states))
 chordGeneration = np.zeros(multPower, dtype=int)
 
-for i in range(0, multPower):
-    prob = np.dot(np.linalg.matrix_power(markovMatrix, i), startMatrix)
-    prob = np.squeeze(prob).tolist()
+if (mORs == "i"):
+    for i in range(0, multPower):
+        prob = np.dot(np.linalg.matrix_power(markovMatrix, i), startMatrix)
+        prob = np.squeeze(prob).tolist()
 
-    chordGeneration[i] = np.random.choice(statesIndex, p=prob)
-    print("It no: ", i)
-    print(np.round(prob, 4))  # Each column matrix probability
-    print("\n")
+        chordGeneration[i] = np.random.choice(statesIndex, p=prob)
+        # print("It no: ", i)
+        # print(np.round(prob, 4))  # Each column matrix probability
+        # print("\n")
+if (mORs == "s"):
+    for i in range(multPower):
+        if (i == 0):
+            prob = np.dot(np.linalg.matrix_power(markovMatrix, i), startMatrix)
+            prob = np.squeeze(prob).tolist()
+
+            chordGeneration[i] = np.random.choice(statesIndex, p=prob)
+        else:
+            prob = np.dot(steadyState, startMatrix)
+            prob = np.squeeze(prob).tolist()
+
+            chordGeneration[i] = np.random.choice(statesIndex, p=prob)
+            # print("It no: ", i)
+            # print(np.round(prob, 4))  # Each column matrix probability
+            # print("\n")
 
 print("Chord Progression for " + str(multPower - 1) + " transitions:")
 print("\n")
@@ -197,25 +252,6 @@ for i in range(len(chordGeneration)):
     finalChords[i] = states[a]
 
 print(finalChords)
-print("\n")
-
-p = 1
-q = p + 1
-
-steadyState = np.linalg.matrix_power(markovMatrix, p)
-steadyState1 = np.linalg.matrix_power(markovMatrix, q)
-
-while np.array_equal(np.around(steadyState, 5), np.around(steadyState1,
-                                                          5)) == False:
-    steadyState = np.linalg.matrix_power(markovMatrix, p)
-    steadyState1 = np.linalg.matrix_power(markovMatrix, q)
-    p += 1
-    q = p + 1
-
-steadyState = np.linalg.matrix_power(markovMatrix, p)
-
-print("Steady state at: " + str(p) + " transitions")
-#print(np.around(np.squeeze(steadyState), 3))
 print("\n")
 
 states1 = states
