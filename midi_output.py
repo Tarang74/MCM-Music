@@ -3,6 +3,8 @@
 
 import os.path
 import midiutil as mu
+import platform as pf
+import subprocess as sp
 from midiutil.MidiFile import MIDIFile
 from datetime import datetime
 from markov_chain import *
@@ -112,3 +114,24 @@ else:
 print(dash5)
 print("Process completed. Check //output/ for files.")
 print(dash5)
+
+
+def open_file(path):
+    if pf.system() == "Windows":
+        os.startfile(path)
+    elif pf.system() == "Darwin":
+        sp.Popen(["open", path])
+    else:
+        sp.Popen(["xdg-open", path])
+
+
+openOutBool = False
+openOut = str
+
+while (openOutBool == False):
+    openOut = str(input("Open output folder? y/n: "))
+    if (openOut == "y" or openOut == "n"):
+        openOutBool = True
+
+if (openOut == "y"):
+    open_file("output")
