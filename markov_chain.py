@@ -35,7 +35,7 @@ for i in range(len(data)):
         print(dash)
         print('{:>14s}{:s}'.format("", "Chord changes:"))
         print(dash)
-        print('{:<12s}{:<13s}{:^8s}'.format("From", "To", "# of occurances"))
+        print('{:<12s}{:<13s}{:^8s}'.format("From", "To", "# of occurrences"))
         print(dash)
     print("{:<12s}{:<22s}{:>6}".format(data[i][0], data[i][1], data[i][2]))
 
@@ -105,13 +105,13 @@ for j in range(len(states)):
     c = c + "sumArry[" + str(j) + "], "
 out = b + c + d
 print(eval(out))
-printtext1 = math.floor((3.5 * len(states)) - 5.5)
+printtext1 = math.floor((3.5 * len(states)) - 7.5)
 print("\n")
 
 for i in range(len(tProb)):
     if i == 0:
         print(dash2)
-        print(" " * printtext1, "Transition Matrix:")
+        print(" " * printtext1, "Markov Matrix:")
         print(dash2)
         m = len(states)
         a = "{:<7}" * m
@@ -130,7 +130,7 @@ for i in range(len(tProb)):
     c = ""
     d = " line, states[i], line)"
     for j in range(len(states)):
-        c = c + "round(tProb[" + "i][" + str(j) + "], 4), "
+        c = c + "tProb[" + "i][" + str(j) + "], "
     out = b + c + d
     print(eval(out))
 
@@ -221,9 +221,10 @@ if (mORs == "i"):
         prob = np.squeeze(prob).tolist()
 
         chordGeneration[i] = np.random.choice(statesIndex, p=prob)
-        # print("It no: ", i)
-        # print(np.round(prob, 4))  # Each column matrix probability
-        # print("\n")
+        print("It no: ", i)
+        print(np.round(prob, 4))  # Each column matrix probability
+        print("\n")
+
 if (mORs == "s"):
     for i in range(multPower):
         if (i == 0):
@@ -251,7 +252,7 @@ for i in range(len(chordGeneration)):
     a = chordGeneration[i]
     finalChords[i] = states[a]
 
-print(finalChords)
+print(*finalChords)
 print("\n")
 
 states1 = states

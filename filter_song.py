@@ -16,8 +16,8 @@ numProgs = 0
 numSongs = 0
 
 chords = [
-    "A", "Am", "A#", "A#m", "B", "Bm", "C", "Cm", "C#", "C#m", "D", "Dm", "D#",
-    "D#m", "E", "Em", "F", "Fm", "F#", "F#m", "G", "Gm", "G#", "G#m"
+    "A#m", "A#", "Am", "A", "Bm", "B", "C#m", "C#", "Cm", "C", "D#m", "D#",
+    "Dm", "D", "Em", "E", "F#m", "F#", "Fm", "F", "G#m", "G#", "Gm", "G"
 ]  # list of all chords
 
 # permutation of all chords (n^r)
@@ -31,20 +31,25 @@ def listToString(s):  # convert array values to string
     return str.join(s)
 
 
-sel = "major"  # input("Select folder: ")  # input major or minor
+sel = input("Select folder: ")  # input major or minor
 
 for file1 in os.listdir(sel):  # repeat for all files in major or minor
     dir = sel + "/" + file1
-    f = open(dir, "r+")  # open file
 
-    lines = f.readlines()  # gather file contents
+    lines = ""
+    with open(dir, "r+") as f:
+        count = 0
+        for line in f:
+            count += 1
+            if count % 2 == 0:
+                lines = lines + line
+
     f.close()  # close file
 
-    a = "\t".join([line.strip() for line in lines])  # remove multispaces
-    # remove "No Chords" "C" may be recognised unintentionally
+    a = lines
     a = a.replace("N.C.", "")
     a = a.replace("*", "")
-    a = " ".join(a.split())  # split all words with space
+    a = " ".join(a.split())
 
     chordProg = [w for w in a.split() if w in chords]  # remove all but chords
     total = len(chordProg) - 1  # number of chord progressions
