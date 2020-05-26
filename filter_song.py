@@ -12,16 +12,23 @@ from numpy import savetxt
 if (os.path.exists("output") == False):
     os.makedirs("output")
 
-numProgs = 0
-numSongs = 0
-
 chords = [
     "A#m", "A#", "Am", "A", "Bm", "B", "C#m", "C#", "Cm", "C", "D#m", "D#",
     "Dm", "D", "Em", "E", "F#m", "F#", "Fm", "F", "G#m", "G#", "Gm", "G"
-]  # list of all chords
+]  # list of all chords    
 
-# permutation of all chords (n^r)
 progArray = np.asarray(list(it.product(chords, repeat=2)))
+# permutation of all chords (n^r)
+
+class FilterSongs:
+
+
+numProgs = 0
+numSongs = 0
+
+
+
+
 
 dict = {}  # empty dictionary for building pairs
 
